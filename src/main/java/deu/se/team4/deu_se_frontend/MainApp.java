@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.json.JSONObject;
 
 
 public class MainApp extends Application {
@@ -20,6 +21,13 @@ public class MainApp extends Application {
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();
+        LoginModel lg = new LoginModel();
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("id", "test");
+        jsvar.put("pw", "test");
+        jsvar.put("account_type", "airline_staff");
+        System.out.println(jsvar);
+        lg.post("http://49.50.163.131:3000/auth/login", jsvar);
     }
 
     /**
