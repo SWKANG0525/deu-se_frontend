@@ -1,33 +1,37 @@
 package deu.se.team4.deu_se_frontend;
 
+import deu.se.team4.deu_se_frontend.model.APICenter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import org.json.JSONObject;
-
+import javafx.stage.StageStyle;
 
 public class MainApp extends Application {
-
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource(APICenter.getInstance().isVersionVaild()));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("JavaFX and Maven");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("A-INFO");
         stage.setScene(scene);
+        stage.setResizable(false);
+       
         stage.show();
-        LoginModel lg = new LoginModel();
-        JSONObject jsvar = new JSONObject();
-        jsvar.put("id", "test");
-        jsvar.put("pw", "test");
-        jsvar.put("account_type", "airline_staff");
-        System.out.println(jsvar);
-        lg.post("http://49.50.163.131:3000/auth/login", jsvar);
+
+
+        Font.loadFont(getClass().getResource("/font/NanumSquareB.ttf").toExternalForm(), 15);
+        Font.loadFont(getClass().getResource("/font/NanumSquareR.ttf").toExternalForm(), 15);
+
     }
 
     /**
@@ -39,7 +43,14 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.setProperty("prism.lcdtext", "false");
+        System.setProperty("prism.text", "t2k");
         launch(args);
+
+    }
+
+    private void initalize() {
+
     }
 
 }

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="mainLayout" layoutY="72.0" prefHeight="628.0" prefWidth="1024" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="deu.se.team4.deu_se_frontend.controller.FXMLCustomerDashBoardController">
+    <children>
+
+      <AnchorPane prefHeight="628.0" prefWidth="1024.0">
+         <children>
+            <VBox layoutX="581.0" layoutY="102.0" prefHeight="363.0" prefWidth="358.0">
+               <children>
+                  <AnchorPane prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: rgba(0, 000, 000, 0.42);">
+                     <children>
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="29.0" prefWidth="187.0" style=" -fx-font-size: 15px; -fx-font-family: NanumSquare Regular;" text="실시간 운항정보 및 비행계획" textFill="WHITE">
+                  </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox prefHeight="324.0" prefWidth="358.0" style="-fx-background-color: rgba(0, 000, 000, 0.19);">
+                     <children>
+                        <Pane fx:id="PANE1" maxWidth="319.0" prefHeight="47.0" prefWidth="319.0" visible="false">
+                           <VBox.margin>
+                              <Insets left="29.0" top="17.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label fx:id="PANE1SUBJECT" text="객체지향모델링 II" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="PANE1TIME" layoutY="15.0" text="9:00~9:50" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="PANE1WHERE" layoutX="245.0" layoutY="17.0" prefHeight="19.0" prefWidth="60.0" text="정보 914" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="133.0" fill="WHITE" layoutX="154.0" layoutY="47.0" startX="-139.5" stroke="WHITE" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="PANE2" maxWidth="319.0" prefHeight="47.0" prefWidth="319.0" visible="false">
+                           <children>
+                              <Label fx:id="PANE2SUBJECT" text="객체지향모델링 II" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="PANE2TIME" layoutY="14.0" text="9:00~9:50" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="PANE2WHERE" layoutX="246.0" layoutY="12.0" prefHeight="24.0" prefWidth="60.0" text="정보 914" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="133.0" fill="WHITE" layoutX="154.0" layoutY="47.0" startX="-139.5" stroke="WHITE" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="29.0" top="17.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane fx:id="PANE3" maxWidth="319.0" prefHeight="47.0" prefWidth="319.0" visible="false">
+                           <children>
+                              <Label fx:id="PANE3SUBJECT" text="객체지향모델링 II" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="PANE3TIME" layoutY="14.0" text="9:00~9:50" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="PANE3WHERE" layoutX="246.0" layoutY="12.0" prefHeight="24.0" prefWidth="60.0" text="정보 914" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="133.0" fill="WHITE" layoutX="154.0" layoutY="47.0" startX="-139.5" stroke="WHITE" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="29.0" top="17.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane fx:id="PANE4" maxWidth="319.0" prefHeight="47.0" prefWidth="319.0" visible="false">
+                           <children>
+                              <Label fx:id="PANE4SUBJECT" text="객체지향모델링 II" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="PANE4TIME" layoutY="14.0" text="9:00~9:50" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="PANE4WHERE" layoutX="246.0" layoutY="12.0" prefHeight="24.0" prefWidth="60.0" text="정보 914" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="133.0" fill="WHITE" layoutX="154.0" layoutY="47.0" startX="-139.5" stroke="WHITE" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="29.0" top="17.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane fx:id="PANE5" maxWidth="319.0" prefHeight="47.0" prefWidth="319.0" visible="false">
+                           <children>
+                              <Label fx:id="PANE5SUBJECT" text="객체지향모델링 II" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="PANE5TIME" layoutY="14.0" text="9:00~9:50" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="PANE5WHERE" layoutX="246.0" layoutY="12.0" prefHeight="24.0" prefWidth="60.0" text="정보 914" textFill="WHITE">
+                                 <font>
+                                    <Font name="NanumSquare Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="29.0" top="17.0" />
+                           </VBox.margin>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Label fx:id="dept" layoutX="97.0" layoutY="452.0" prefHeight="29.0" prefWidth="223.0" style="-fx-font-size: 18px; -fx-font-family: NanumSquare Bold;" text="인천공항" textFill="WHITE">
+
+      </Label>
+            <Label fx:id="username" cache="true" layoutX="95.0" layoutY="480.0" prefHeight="65.0" prefWidth="358.0" style="-fx-font-size: 50px; -fx-font-family: NanumSquare Bold;" text="강호동 승객" textFill="WHITE">
+
+      </Label>
+            <Label layoutX="784.0" layoutY="593.0" style="-fx-font-size: 10px; -fx-font-family: NanumSquare Regular;" text="Design Improved By Kang Ho Dong, Hangul-Clock " textFill="WHITE">
+      </Label>
+            <Label layoutX="711.0" layoutY="519.0" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Regular;" text="A-INFO Version Beta-1  Windows." textFill="WHITE">
+      </Label>
+            <Label layoutX="753.0" layoutY="541.0" style="-fx-font-size: 12px; -fx-font-family: NanumSquare Regular;" text="빌드번호 : 201810241137. Latest. " textFill="WHITE">
+
+      </Label>
+            <Label layoutX="691.0" layoutY="580.0" style="-fx-font-size: 10px; -fx-font-family: NanumSquare Regular;" text="© 2020 Kang Ho Dong. Dong-eui University. Computer Software Dept." textFill="WHITE">
+
+      </Label>
+         </children>
+      </AnchorPane>
+    </children> 
+</AnchorPane>

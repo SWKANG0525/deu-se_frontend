@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
+<AnchorPane id="AnchorPane" fx:id="rootLayout" prefHeight="700" prefWidth="1024" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="deu.se.team4.deu_se_frontend.controller.FXMLCustomerMainController">
+    <children>
+      <MediaView fx:id="mediaView" fitHeight="700.0" fitWidth="1031.0" />
+      <Pane opacity="0.5" prefHeight="700.0" prefWidth="1031.0" style="-fx-background-color: #000000;">
+         <children>
+         </children></Pane>
+        
+      <HBox layoutX="7.0" layoutY="8.0" prefHeight="72.0" prefWidth="1024.0">
+         <children>
+            <ImageView fx:id="logo" fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="23.0" top="17.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@assets/logo.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="170.0">
+               <children>
+                  <Label style="-fx-font-size: 15px; -fx-font-family: NanumSquare Regular;" text="공항 체크인 관리시스템" textFill="WHITE">
+                  </Label>
+                  <Label style="-fx-font-size: 15px; -fx-font-family: NanumSquare Regular;" text="A-INFO" textFill="WHITE">
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+            <Label prefWidth="60.0" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="대시보드" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="80.0" top="29.0" />
+               </HBox.margin>
+
+            </Label>
+            <Label fx:id="btn2" opacity="0.5" prefHeight="19.0" prefWidth="81.0" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="항공편 예약" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="61.0" top="29.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="btn3" opacity="0.5" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="내 여행 일정" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="61.0" top="29.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="btn4" opacity="0.5" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="주차장 현황" textFill="WHITE">
+               <HBox.margin>    
+                  <Insets left="61.0" top="29.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="btn5" opacity="0.5" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="공항 정보" textFill="WHITE">
+
+               <HBox.margin>
+                  <Insets left="61.0" top="29.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+    </children> 
+</AnchorPane>
