@@ -19,6 +19,7 @@ import org.json.JSONObject;
 public class FlightModel extends BaseModel {
 
     private static final String FLIGHT_SELECT_DATE_LIST = "flight/date";
+    private static final String FLIGHT_SELECT_AIRLINE_KOR_LIST = "flight/list";
     private static final String ADD_FLIGHT = "flight/register";
 
     @Override
@@ -37,6 +38,29 @@ public class FlightModel extends BaseModel {
         jsvar.put("apiKey", APICenter.getInstance().getApiKey());
         jsvar.put("start_date", start_date);
         String raw_string = super.postNonAPISynchronous(FLIGHT_SELECT_DATE_LIST, jsvar.toString());
+        
+        
+        raw_string = raw_string.substring(10, raw_string.length() - 1);
+        
+        try {
+        List<FlightVO> flight_list = gson.fromJson(raw_string, new TypeToken<List<FlightVO>>() {
+        }.getType());
+           return flight_list;
+        // list = gson.fromJson(raw_string, listType);   
+        } catch(JsonSyntaxException e) {
+            List<FlightVO> flight_list = new ArrayList<>();
+            return flight_list;
+            
+        }
+
+    }
+    
+        List<FlightVO> generateFlightByAirlineKor(String airline_kor) {
+
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("apiKey", APICenter.getInstance().getApiKey());
+        jsvar.put("airline_kor", airline_kor);
+        String raw_string = super.postNonAPISynchronous(FLIGHT_SELECT_AIRLINE_KOR_LIST, jsvar.toString());
         
         
         raw_string = raw_string.substring(10, raw_string.length() - 1);

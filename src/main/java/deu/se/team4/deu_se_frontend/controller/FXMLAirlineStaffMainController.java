@@ -73,6 +73,8 @@ public class FXMLAirlineStaffMainController implements Initializable {
     @FXML
     Label PANE5WHERE;
     @FXML
+    Label btn1;
+    @FXML
     Label btn2;
     @FXML
     Label btn3;
@@ -86,6 +88,7 @@ public class FXMLAirlineStaffMainController implements Initializable {
     private AnchorPane rootLayout;
     private AnchorPane mainLayout;
     private AnchorPane flightLayout;
+    private AnchorPane bookLayout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -104,15 +107,32 @@ public class FXMLAirlineStaffMainController implements Initializable {
             Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
         rootLayout.getChildren().add(mainLayout);
+        btn1.setOnMouseClicked(e -> DashBoardHandle(e));
         btn2.setOnMouseClicked(e -> flightHandle(e));
+        btn3.setOnMouseClicked(e -> bookHandle(e));
 
+    }
+    
+    public void DashBoardHandle(MouseEvent s) {
+
+        rootLayout.getChildren().remove(mainLayout);
+        rootLayout.getChildren().remove(flightLayout);
+        rootLayout.getChildren().remove(bookLayout);
+
+        try {
+            mainLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAirlineStaffMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        rootLayout.getChildren().add(mainLayout);
     }
 
     public void flightHandle(MouseEvent s) {
 
-        System.out.println("HI");
         rootLayout.getChildren().remove(mainLayout);
         rootLayout.getChildren().remove(flightLayout);
+        rootLayout.getChildren().remove(bookLayout);
 
         try {
             flightLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLAirlineStaffFlightView.fxml"));
@@ -121,5 +141,20 @@ public class FXMLAirlineStaffMainController implements Initializable {
         }
 
         rootLayout.getChildren().add(flightLayout);
+    }
+    
+        public void bookHandle(MouseEvent s) {
+
+        rootLayout.getChildren().remove(mainLayout);
+        rootLayout.getChildren().remove(flightLayout);
+        rootLayout.getChildren().remove(bookLayout);
+
+        try {
+            bookLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLAirlineStaffBookView.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAirlineStaffMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        rootLayout.getChildren().add(bookLayout);
     }
 }

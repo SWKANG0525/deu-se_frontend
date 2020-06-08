@@ -10,6 +10,8 @@ package deu.se.team4.deu_se_frontend.vo;
  * @author 강호동
  */
 public class BookVO {
+    public String id;
+    public String customer_id;
     public String identifier;
     public String seat_grade;
     public int seat_num;

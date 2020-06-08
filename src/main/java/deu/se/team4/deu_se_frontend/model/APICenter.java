@@ -97,7 +97,6 @@ public class APICenter {
         return flight_model.generateFlightByDate(start_date);
 
     }
-
     public String getAirlineKor() {
         if (apiKey == null) {
             return "false";
@@ -105,6 +104,14 @@ public class APICenter {
         return login_model.getAirline_kor();
 
     }
+    
+    public List<FlightVO> getFlightByAirlineKor(String airline_kor) {
+        flight_model = new FlightModel();
+        return flight_model.generateFlightByAirlineKor(airline_kor);
+
+    }
+
+
 
     public Boolean addFlight(FlightVO flight_vo) {
         flight_model = new FlightModel();
@@ -149,10 +156,16 @@ public class APICenter {
         }
         return false;
     }
-    
+
     public JsonElement countCanBook(String identifier) {
         book_model = new BookModel();
         return book_model.countCanBook(identifier);
+    }
+
+    public List<BookVO> getBookByIdentifier(String identifier) {
+        book_model = new BookModel();
+        return book_model.generateBookByIdentifier(identifier);
+
     }
 
 }

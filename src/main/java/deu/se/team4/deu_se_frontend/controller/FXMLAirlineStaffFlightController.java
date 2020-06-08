@@ -127,6 +127,7 @@ public class FXMLAirlineStaffFlightController implements Initializable {
         today_date = df.format(cal.getTime());
         month = cal.get(Calendar.MONTH) + 1;
         date_flight.setText(cal.get(Calendar.YEAR) + "년 " + month + "월 " + cal.get(Calendar.DATE) + "일 실시간 항공편");
+        
         flightTable.setOnMouseClicked(e -> flightTableEvent(e));
         addflightbtn.setOnMouseClicked(e -> InputFlightInformation(e));
         submitflight.setOnMouseClicked(e -> runAddFlight(e));

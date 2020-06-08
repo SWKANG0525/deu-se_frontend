@@ -7,6 +7,12 @@ package deu.se.team4.deu_se_frontend.model;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import deu.se.team4.deu_se_frontend.vo.BookVO;
+import deu.se.team4.deu_se_frontend.vo.FlightVO;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONObject;
 
 /**
@@ -18,6 +24,7 @@ public class BookModel extends BaseModel {
     private static final String BOOK_CHECK_SEAT = "booking/check_seat";
     private static final String BOOK_SEAT_REMAIN = "booking/check_seat_remain";
     private static final String BOOK_FLIGHT = "booking/flight";
+    private static final String BOOK_LIST_BY_IDENTIFIER="booking/list";
 
     @Override
     void createModel(String stringJson) {
@@ -92,6 +99,29 @@ public class BookModel extends BaseModel {
         }
 
         return 0;
+    }
+    
+    List<BookVO> generateBookByIdentifier(String identifier) {
+
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("apiKey", APICenter.getInstance().getApiKey());
+        jsvar.put("identifier", identifier);
+        String raw_string = super.postNonAPISynchronous(BOOK_LIST_BY_IDENTIFIER, jsvar.toString());
+        
+        
+        raw_string = raw_string.substring(10, raw_string.length() - 1);
+        
+        try {
+        List<BookVO> book_list = gson.fromJson(raw_string, new TypeToken<List<BookVO>>() {
+        }.getType());
+           return book_list;
+        // list = gson.fromJson(raw_string, listType);   
+        } catch(JsonSyntaxException e) {
+            List<BookVO> book_list = new ArrayList<>();
+            return book_list;
+            
+        }
+
     }
 
 }
