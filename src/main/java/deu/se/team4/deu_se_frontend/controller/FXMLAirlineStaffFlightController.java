@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -122,7 +123,7 @@ public class FXMLAirlineStaffFlightController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         cal = Calendar.getInstance();
         cal.setTime(new Date());
-        df = new SimpleDateFormat("yyyy-MM-dd"); 
+        df = new SimpleDateFormat("yyyy-MM-dd");
         today_date = df.format(cal.getTime());
         month = cal.get(Calendar.MONTH) + 1;
         date_flight.setText(cal.get(Calendar.YEAR) + "년 " + month + "월 " + cal.get(Calendar.DATE) + "일 실시간 항공편");
@@ -137,49 +138,49 @@ public class FXMLAirlineStaffFlightController implements Initializable {
         colDestAirport.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().dest_airport));
         left_btn.setOnMouseClicked(e -> minusDate(e));
         right_btn.setOnMouseClicked(e -> plusDate(e));
-        
+
         loadFlight();
 
         try {
-          setFlightInformation(flightTable.getItems().get(0));
+            setFlightInformation(flightTable.getItems().get(0));
 
-        } catch(IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("항공편이 존재하지 않습니다");
         }
     }
-    
+
     private void plusDate(MouseEvent e) {
-            month = cal.get(Calendar.MONTH) + 1;
-            cal.add(Calendar.DATE, +1);
-            today_date = df.format(cal.getTime());
-            date_flight.setText(cal.get(Calendar.YEAR) + "년 " + month + "월 " + cal.get(Calendar.DATE) + "일 실시간 항공편");
-            loadFlight();
-          try {
-          setFlightInformation(flightTable.getItems().get(0));
+        month = cal.get(Calendar.MONTH) + 1;
+        cal.add(Calendar.DATE, +1);
+        today_date = df.format(cal.getTime());
+        date_flight.setText(cal.get(Calendar.YEAR) + "년 " + month + "월 " + cal.get(Calendar.DATE) + "일 실시간 항공편");
+        loadFlight();
+        try {
+            setFlightInformation(flightTable.getItems().get(0));
 
-        } catch(IndexOutOfBoundsException e2) {
+        } catch (IndexOutOfBoundsException e2) {
             System.out.println("항공편이 존재하지 않습니다");
         }
-        
+
     }
-    
-    private void minusDate(MouseEvent e) {
-            month = cal.get(Calendar.MONTH) + 1;
-            cal.add(Calendar.DATE, -1);
-            today_date = df.format(cal.getTime());
-            date_flight.setText(cal.get(Calendar.YEAR) + "년 " + month + "월 " + cal.get(Calendar.DATE) + "일 실시간 항공편");
-            loadFlight();
-          try {
-          setFlightInformation(flightTable.getItems().get(0));
 
-        } catch(IndexOutOfBoundsException e3) {
+    private void minusDate(MouseEvent e) {
+        month = cal.get(Calendar.MONTH) + 1;
+        cal.add(Calendar.DATE, -1);
+        today_date = df.format(cal.getTime());
+        date_flight.setText(cal.get(Calendar.YEAR) + "년 " + month + "월 " + cal.get(Calendar.DATE) + "일 실시간 항공편");
+        loadFlight();
+        try {
+            setFlightInformation(flightTable.getItems().get(0));
+
+        } catch (IndexOutOfBoundsException e3) {
             System.out.println("항공편이 존재하지 않습니다");
         }
-        
+
     }
 
     private void setFlightInformation(FlightVO flight_vo) {
-    
+
         flightInformation.setVisible(true);
         addflightinformation.setVisible(false);
         identifier.setText(flight_vo.identifier);
@@ -237,7 +238,21 @@ public class FXMLAirlineStaffFlightController implements Initializable {
         flight_vo.economy_seat_num = Integer.parseInt(add_economy_seat.getText());
         flight_vo.sign = 1;
 
-        APICenter.getInstance().addFlight(flight_vo);
+        if (APICenter.getInstance().addFlight(flight_vo)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("A-INFO");
+            alert.setHeaderText("승인요청 완료");
+            alert.setContentText("항공편 편성이 정상적으로 요청되었습니다");
+            alert.showAndWait();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("A-INFO");
+            alert.setHeaderText("승인요청 실패");
+            alert.setContentText("알 수 없는 오류로 인해 편성이 반려되었습니다.");
+            alert.showAndWait();
+
+        }
         loadFlight();
     }
 

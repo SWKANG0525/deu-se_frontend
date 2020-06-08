@@ -282,6 +282,7 @@ public class FXMLGenerateAccountViewController implements Initializable {
 
         if (event.getCode() == KeyCode.ENTER) {
             if (APICenter.getInstance().isIDExist(flow7.getText())) {
+                APICenter.getInstance().setID(flow7.getText());
                 flow7.setDisable(true);
                 anim.fadein(flow7, 1.5);
                 anim.fadein(accountline, 1.5);

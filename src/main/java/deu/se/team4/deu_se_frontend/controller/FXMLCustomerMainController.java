@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -25,7 +26,7 @@ import javafx.scene.media.MediaView;
  *
  * @author 강호동
  */
-public class FXMLCustomerMainController implements Initializable{
+public class FXMLCustomerMainController implements Initializable {
 
     @FXML
     Label username;
@@ -84,8 +85,7 @@ public class FXMLCustomerMainController implements Initializable{
     @FXML
     private AnchorPane rootLayout;
     private AnchorPane mainLayout;
-
-
+    private AnchorPane flightLayout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -97,18 +97,30 @@ public class FXMLCustomerMainController implements Initializable{
         mediaView.setMediaPlayer(mp);
         mp.play();
         mp.setCycleCount(MediaPlayer.INDEFINITE);
-        
-        
-     
+
         try {
-            mainLayout =  FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
+            mainLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-            rootLayout.getChildren().add(mainLayout);
+        rootLayout.getChildren().add(mainLayout);
+        btn2.setOnMouseClicked(e -> flightHandle(e));
 
     }
 
+    public void flightHandle(MouseEvent s) {
 
+        System.out.println("HI");
+        rootLayout.getChildren().remove(mainLayout);
+        rootLayout.getChildren().remove(flightLayout);
+
+        try {
+            flightLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerFlightView.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAirlineStaffMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        rootLayout.getChildren().add(flightLayout);
+    }
 
 }

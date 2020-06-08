@@ -189,6 +189,7 @@ public class FXMLLoginController implements Initializable {
             id.setStyle("-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 30px; -fx-font-family: NanumSquare Bold;");
             return false;
         } else {
+            APICenter.getInstance().setID(id.getText());
             return true;
         }
     }

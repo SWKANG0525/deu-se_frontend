@@ -5,7 +5,9 @@
  */
 package deu.se.team4.deu_se_frontend.model;
 
+import com.google.gson.JsonElement;
 import deu.se.team4.deu_se_frontend.EnumAccount;
+import deu.se.team4.deu_se_frontend.vo.BookVO;
 import deu.se.team4.deu_se_frontend.vo.FlightVO;
 import java.util.List;
 import org.json.JSONObject;
@@ -18,6 +20,7 @@ import org.json.JSONObject;
 public class APICenter {
 
     private static String apiKey;
+    private static String id;
     private EnumAccount account_type;
     private static final APICenter API_CENTER = new APICenter();
 
@@ -25,6 +28,7 @@ public class APICenter {
     private RegisterModel register_model;
     private VersionModel version_model;
     private FlightModel flight_model;
+    private BookModel book_model;
 
     private APICenter() {
     }
@@ -36,9 +40,14 @@ public class APICenter {
     public final void setApiKey(String apiKey) {
         APICenter.apiKey = apiKey;
     }
+
     public final String getApiKey() {
         return APICenter.apiKey;
-    }    
+    }
+
+    public final void setID(String id) {
+        APICenter.id = id;
+    }
 
     public final void setAccountType(EnumAccount account_type) {
         this.account_type = account_type;
@@ -71,7 +80,7 @@ public class APICenter {
         if (account_type == null) {
             return "false";
         }
-        
+
         login_model = new LoginModel();
         login_model.setLoginStrategy(account_type);
         return login_model.login(id, pw, account_type);
@@ -82,20 +91,21 @@ public class APICenter {
         version_model = new VersionModel();
         return version_model.VersionCheck();
     }
-    
+
     public List<FlightVO> getFlightByDate(String start_date) {
         flight_model = new FlightModel();
         return flight_model.generateFlightByDate(start_date);
-        
+
     }
-    
-        public String getAirlineKor() {
-            if(apiKey ==  null)
-                return "false";          
+
+    public String getAirlineKor() {
+        if (apiKey == null) {
+            return "false";
+        }
         return login_model.getAirline_kor();
-        
+
     }
-    
+
     public Boolean addFlight(FlightVO flight_vo) {
         flight_model = new FlightModel();
         JSONObject jsvar = new JSONObject();
@@ -113,9 +123,36 @@ public class APICenter {
         jsvar.put("business_seat_num", flight_vo.business_seat_num);
         jsvar.put("economy_seat_num", flight_vo.economy_seat_num);
         jsvar.put("sign", flight_vo.sign);
-        
+
         return flight_model.addFlight(jsvar.toString());
-        
+
+    }
+
+    public Boolean bookFlight(BookVO book_vo) {
+        book_model = new BookModel();
+
+        if (book_model.checkCanBook(book_vo.identifier, book_vo.seat_grade)) {
+            System.out.println(book_vo.identifier);
+            System.out.println(book_vo.seat_grade);
+
+            JSONObject jsvar = new JSONObject();
+            jsvar.put("apiKey", APICenter.getInstance().getApiKey());
+
+            jsvar.put("identifier", book_vo.identifier);
+            jsvar.put("seat_grade", book_vo.seat_grade);
+            jsvar.put("seat_num", book_model.setBookSeat(book_vo.identifier, book_vo.seat_grade));
+            jsvar.put("customer_id", id);
+            jsvar.put("baggage_weight", book_vo.baggage_weight);
+            jsvar.put("car_number", book_vo.car_number);
+            return book_model.bookFlight(jsvar.toString());
+
+        }
+        return false;
+    }
+    
+    public JsonElement countCanBook(String identifier) {
+        book_model = new BookModel();
+        return book_model.countCanBook(identifier);
     }
 
 }

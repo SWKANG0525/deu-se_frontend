@@ -47,7 +47,7 @@ public class FlightModel extends BaseModel {
            return flight_list;
         // list = gson.fromJson(raw_string, listType);   
         } catch(JsonSyntaxException e) {
-            List<FlightVO> flight_list = new ArrayList<FlightVO>();
+            List<FlightVO> flight_list = new ArrayList<>();
             return flight_list;
             
         }

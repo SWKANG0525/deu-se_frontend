@@ -5,7 +5,6 @@
  */
 package deu.se.team4.deu_se_frontend.controller;
 
-import deu.se.team4.deu_se_frontend.model.APICenter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -28,8 +26,8 @@ import javafx.scene.media.MediaView;
  *
  * @author 강호동
  */
-public class FXMLAirlineStaffMainController implements Initializable{
-    
+public class FXMLAirlineStaffMainController implements Initializable {
+
     @FXML
     Label username;
     @FXML
@@ -88,10 +86,6 @@ public class FXMLAirlineStaffMainController implements Initializable{
     private AnchorPane rootLayout;
     private AnchorPane mainLayout;
     private AnchorPane flightLayout;
-    @FXML
-    private TableView flightTable;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,35 +97,29 @@ public class FXMLAirlineStaffMainController implements Initializable{
         mediaView.setMediaPlayer(mp);
         mp.play();
         mp.setCycleCount(MediaPlayer.INDEFINITE);
-        
-        
-     
+
         try {
-            mainLayout =  FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
+            mainLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-            rootLayout.getChildren().add(mainLayout);
-            btn2.setOnMouseClicked(e->flightHandle(e));
-
+        rootLayout.getChildren().add(mainLayout);
+        btn2.setOnMouseClicked(e -> flightHandle(e));
 
     }
 
     public void flightHandle(MouseEvent s) {
-        
-                    System.out.println("HI");
-                    rootLayout.getChildren().remove(mainLayout);
-                    rootLayout.getChildren().remove(flightLayout);
 
+        System.out.println("HI");
+        rootLayout.getChildren().remove(mainLayout);
+        rootLayout.getChildren().remove(flightLayout);
 
-                    try {
-                        flightLayout =  FXMLLoader.load(getClass().getResource("/fxml/FXMLAirlineStaffFlightView.fxml"));
-                    } catch (IOException ex) {
-                        Logger.getLogger(FXMLAirlineStaffMainController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
+        try {
+            flightLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLAirlineStaffFlightView.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAirlineStaffMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-                    rootLayout.getChildren().add(flightLayout);
-            } 
+        rootLayout.getChildren().add(flightLayout);
     }
-
+}
