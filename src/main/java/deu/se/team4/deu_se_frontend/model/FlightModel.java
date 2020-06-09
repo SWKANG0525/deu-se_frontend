@@ -20,6 +20,7 @@ public class FlightModel extends BaseModel {
 
     private static final String FLIGHT_SELECT_DATE_LIST = "flight/date";
     private static final String FLIGHT_SELECT_AIRLINE_KOR_LIST = "flight/list";
+    private static final String FLIGHT_SELECT_IDENTIFIER = "flight/identifier";
     private static final String ADD_FLIGHT = "flight/register";
 
     @Override
@@ -76,6 +77,16 @@ public class FlightModel extends BaseModel {
             
         }
 
+    }
+        
+        FlightVO generateFlightByIdentifier(String   identifier) {
+
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("apiKey", APICenter.getInstance().getApiKey());
+        jsvar.put("identifier", identifier);
+        FlightVO flight = gson.fromJson(super.postNonAPISynchronous(FLIGHT_SELECT_IDENTIFIER, jsvar.toString()),FlightVO.class);
+        System.out.println(flight.start_airport);
+        return flight;
     }
 
     Boolean addFlight(String strJson) {

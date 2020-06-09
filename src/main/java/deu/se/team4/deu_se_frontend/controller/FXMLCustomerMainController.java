@@ -73,6 +73,8 @@ public class FXMLCustomerMainController implements Initializable {
     @FXML
     Label PANE5WHERE;
     @FXML
+    Label btn1;
+    @FXML
     Label btn2;
     @FXML
     Label btn3;
@@ -86,6 +88,7 @@ public class FXMLCustomerMainController implements Initializable {
     private AnchorPane rootLayout;
     private AnchorPane mainLayout;
     private AnchorPane flightLayout;
+    private AnchorPane bookLayout;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,22 +108,64 @@ public class FXMLCustomerMainController implements Initializable {
         }
         rootLayout.getChildren().add(mainLayout);
         btn2.setOnMouseClicked(e -> flightHandle(e));
+        btn1.setOnMouseClicked(e -> DashBoardHandle(e));
+        btn3.setOnMouseClicked(e -> bookHandle(e));
 
     }
 
     public void flightHandle(MouseEvent s) {
 
-        System.out.println("HI");
+        btn1.setOpacity(0.5);
+        btn2.setOpacity(1);
+        btn3.setOpacity(0.5);
         rootLayout.getChildren().remove(mainLayout);
         rootLayout.getChildren().remove(flightLayout);
-
+        rootLayout.getChildren().remove(bookLayout);
         try {
             flightLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerFlightView.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(FXMLAirlineStaffMainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         rootLayout.getChildren().add(flightLayout);
+    }
+    
+        public void DashBoardHandle(MouseEvent s) {
+            
+        btn1.setOpacity(1);
+        btn2.setOpacity(0.5);
+        btn3.setOpacity(0.5);
+
+        rootLayout.getChildren().remove(mainLayout);
+        rootLayout.getChildren().remove(flightLayout);
+        rootLayout.getChildren().remove(bookLayout);
+
+        try {
+            mainLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        rootLayout.getChildren().add(mainLayout);
+    }
+
+    
+        public void bookHandle(MouseEvent s) {
+
+        btn1.setOpacity(0.5);
+        btn2.setOpacity(0.5);
+        btn3.setOpacity(1);
+        rootLayout.getChildren().remove(mainLayout);
+        rootLayout.getChildren().remove(flightLayout);
+        rootLayout.getChildren().remove(bookLayout);
+
+        try {
+            bookLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerBookView.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        rootLayout.getChildren().add(bookLayout);
     }
 
 }

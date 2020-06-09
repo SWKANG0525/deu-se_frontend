@@ -97,6 +97,7 @@ public class APICenter {
         return flight_model.generateFlightByDate(start_date);
 
     }
+
     public String getAirlineKor() {
         if (apiKey == null) {
             return "false";
@@ -104,14 +105,23 @@ public class APICenter {
         return login_model.getAirline_kor();
 
     }
-    
+
     public List<FlightVO> getFlightByAirlineKor(String airline_kor) {
         flight_model = new FlightModel();
         return flight_model.generateFlightByAirlineKor(airline_kor);
 
     }
 
+    public List<BookVO> getBookByCustomerId() {
+        book_model = new BookModel();
+        return book_model.generateBookByCustomerId(id);
 
+    }
+
+    public FlightVO getFlightByIdentifier(String identifier) {
+        flight_model = new FlightModel();
+        return flight_model.generateFlightByIdentifier(identifier);
+    }
 
     public Boolean addFlight(FlightVO flight_vo) {
         flight_model = new FlightModel();
@@ -167,5 +177,10 @@ public class APICenter {
         return book_model.generateBookByIdentifier(identifier);
 
     }
+    
+    public boolean requestBookDelete(int book_id) {
+        book_model = new BookModel();
+        return book_model.deleteBook(book_id);
+    } 
 
 }

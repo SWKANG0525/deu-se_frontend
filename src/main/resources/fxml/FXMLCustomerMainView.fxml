@@ -38,7 +38,7 @@
                   <Insets left="10.0" top="20.0" />
                </HBox.margin>
             </VBox>
-            <Label prefWidth="60.0" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="대시보드" textFill="WHITE">
+            <Label fx:id="btn1" prefWidth="60.0" style="-fx-font-size: 15px; -fx-font-family: NanumSquare Bold;" text="대시보드" textFill="WHITE">
                <HBox.margin>
                   <Insets left="80.0" top="29.0" />
                </HBox.margin>

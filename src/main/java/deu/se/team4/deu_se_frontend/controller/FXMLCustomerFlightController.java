@@ -237,6 +237,10 @@ public class FXMLCustomerFlightController implements Initializable {
         book_vo.car_number = car_number.getText();
 
         if (APICenter.getInstance().bookFlight(book_vo)) {
+            JsonElement element = APICenter.getInstance().countCanBook(identifier.getText());
+            first_seat_num.setText(element.getAsJsonObject().get("first_seat_num").getAsString());
+            business_seat_num.setText(element.getAsJsonObject().get("business_seat_num").getAsString());
+            economy_seat_num.setText(element.getAsJsonObject().get("economy_seat_num").getAsString());
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("A-INFO");
             alert.setHeaderText("예약 성공");

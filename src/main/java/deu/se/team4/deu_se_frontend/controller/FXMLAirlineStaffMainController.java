@@ -114,7 +114,9 @@ public class FXMLAirlineStaffMainController implements Initializable {
     }
     
     public void DashBoardHandle(MouseEvent s) {
-
+        btn1.setOpacity(1);
+        btn2.setOpacity(0.5);
+        btn3.setOpacity(0.5);
         rootLayout.getChildren().remove(mainLayout);
         rootLayout.getChildren().remove(flightLayout);
         rootLayout.getChildren().remove(bookLayout);
@@ -129,7 +131,9 @@ public class FXMLAirlineStaffMainController implements Initializable {
     }
 
     public void flightHandle(MouseEvent s) {
-
+        btn1.setOpacity(0.5);
+        btn2.setOpacity(1);
+        btn3.setOpacity(0.5);
         rootLayout.getChildren().remove(mainLayout);
         rootLayout.getChildren().remove(flightLayout);
         rootLayout.getChildren().remove(bookLayout);
@@ -144,7 +148,9 @@ public class FXMLAirlineStaffMainController implements Initializable {
     }
     
         public void bookHandle(MouseEvent s) {
-
+        btn1.setOpacity(0.5);
+        btn2.setOpacity(0.5);
+        btn3.setOpacity(1);
         rootLayout.getChildren().remove(mainLayout);
         rootLayout.getChildren().remove(flightLayout);
         rootLayout.getChildren().remove(bookLayout);
