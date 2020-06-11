@@ -3,6 +3,6 @@ branches:
   only: 
     - master
 jdk:
-- oraclejdk11
+- zulu11.2.3-jdk11.0.1
 
 
