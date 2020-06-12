@@ -23,7 +23,9 @@ final class LoginModel extends BaseModel {
     private static final String FXML_CUSTOMER_MAIN = "/fxml/FXMLCustomerMainView.fxml";
     private static final String FXML_AIRLINE_STAFF_MAIN = "/fxml/FXMLAirlineStaffMainView.fxml";
     private static final String FXML_AIRPORT_STAFF_MAIN = "/fxml/FXMLAirPortStaffMainView.fxml";
-    
+    private static final String GET_AIRLINE_STAFF_NAME = "airline_staff/name";
+    private static final String GET_CUSTOMER_NAME = "customers/name";
+
     private LoginVO login;
 
     private LoginStrategy loginStrategy;
@@ -69,16 +71,36 @@ final class LoginModel extends BaseModel {
         return loginStrategy.loginProcess(jsvar.toString());
 
     }
-    
-      public String getAirline_kor() {
-          JSONObject jsvar = new JSONObject();
-          jsvar.put("apiKey", APICenter.getInstance().getApiKey());
-            String rawData = postNonAPISynchronous(GET_AIRLINE_KOR_URL, jsvar.toString());
-                JsonParser parser = new JsonParser();
-                JsonElement element = parser.parse(rawData);
-            return element.getAsJsonObject().get("airline_kor").getAsString();
- 
-        }
+
+    public String getCustomerName(String id) {
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("id", id);
+        String rawData = postNonAPISynchronous(GET_CUSTOMER_NAME, jsvar.toString());
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(rawData);
+        return element.getAsJsonObject().get("result").getAsString();
+
+    }
+
+    public String getAirlineStaffName(String id) {
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("id",id );
+        String rawData = postNonAPISynchronous(GET_AIRLINE_STAFF_NAME, jsvar.toString());
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(rawData);
+        return element.getAsJsonObject().get("result").getAsString();
+
+    }
+
+    public String getAirline_kor() {
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("apiKey", APICenter.getInstance().getApiKey());
+        String rawData = postNonAPISynchronous(GET_AIRLINE_KOR_URL, jsvar.toString());
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(rawData);
+        return element.getAsJsonObject().get("airline_kor").getAsString();
+
+    }
 
     private class AirlineStaffLoginStrategy implements LoginStrategy {
 
@@ -156,7 +178,6 @@ final class LoginModel extends BaseModel {
             JsonElement element = parser.parse(rawData);
             return element.getAsJsonObject().get("result").getAsBoolean();
         }
-        
-      
+
     }
 }

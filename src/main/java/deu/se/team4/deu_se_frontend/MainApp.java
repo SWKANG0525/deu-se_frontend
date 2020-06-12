@@ -16,7 +16,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource(APICenter.getInstance().isVersionVaild()));
         Scene scene = new Scene(root);
-        stage.initStyle(StageStyle.UNDECORATED);
+        //stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("A-INFO");
         stage.setScene(scene);
         stage.setResizable(false);

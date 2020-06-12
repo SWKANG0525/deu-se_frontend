@@ -102,7 +102,7 @@ public class FXMLAirlineStaffMainController implements Initializable {
         mp.setCycleCount(MediaPlayer.INDEFINITE);
 
         try {
-            mainLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLCustomerDashBoardView.fxml"));
+            mainLayout = FXMLLoader.load(getClass().getResource("/fxml/FXMLAirlineStaffDashBoardView.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(FXMLCustomerMainController.class.getName()).log(Level.SEVERE, null, ex);
         }

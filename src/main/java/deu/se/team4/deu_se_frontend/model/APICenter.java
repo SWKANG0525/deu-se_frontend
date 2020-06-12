@@ -102,6 +102,8 @@ public class APICenter {
         if (apiKey == null) {
             return "false";
         }
+        
+        login_model = new LoginModel();
         return login_model.getAirline_kor();
 
     }
@@ -182,5 +184,16 @@ public class APICenter {
         book_model = new BookModel();
         return book_model.deleteBook(book_id);
     } 
+    
+    public String getCustomerName() {
+        login_model = new LoginModel();
+        return login_model.getCustomerName(id);
 
+    }
+    
+    public String getAirlineStaffName() {
+        login_model = new LoginModel();
+        return login_model.getAirlineStaffName(id);
+
+    }
 }
