@@ -27,12 +27,11 @@ final class VersionModel extends BaseModel {
  * and open the template in the editor.
      */
     private final String FXML1 = "/fxml/FXMLGenerateAccountView.fxml";
-    // private final String FXML2 = "/fxml/FXMLGenerateAccountView.fxml";
     private final String FXML2 = "/fxml/FXMLLoginView.fxml";
     private static final String MODULE_URL = "version";
     private VersionVO version_vo;
-
-    public VersionModel() {
+    
+   public VersionModel() {
 
         createModel(null);
 
@@ -47,6 +46,7 @@ final class VersionModel extends BaseModel {
     public void printModel() {
         System.out.println("version : " + version_vo.getVersion());
     }
+
 
     String VersionCheck() {
         String server_version = version_vo.getVersion();
@@ -84,7 +84,7 @@ final class VersionModel extends BaseModel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(APICenter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return "none";
 
     }
 }

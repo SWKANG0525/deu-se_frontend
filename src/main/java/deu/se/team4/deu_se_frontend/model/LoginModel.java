@@ -65,6 +65,7 @@ final class LoginModel extends BaseModel {
 
     public String login(String id, String pw, EnumAccount account_type) {
         JSONObject jsvar = new JSONObject();
+        
         jsvar.put("id", id);
         jsvar.put("pw", pw);
         jsvar.put("account_type", account_type.getName());

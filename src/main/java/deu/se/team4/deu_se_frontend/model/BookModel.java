@@ -26,6 +26,7 @@ public class BookModel extends BaseModel {
     private static final String BOOK_LIST_BY_IDENTIFIER = "booking/list";
     private static final String BOOK_LIST_BY_CUSTOMER_ID = "booking/customer_id";
     private static final String BOOK_DELETE = "booking/delete";
+    private static final String BOOK_AMOUNT_BY_AIRLINE_KOR = "booking/amount";
 
     @Override
     void createModel(String stringJson) {
@@ -37,7 +38,7 @@ public class BookModel extends BaseModel {
 
     Boolean bookFlight(String strJson) {
 
-        String raw_string = super.postNonAPISynchronous(BOOK_FLIGHT, strJson);
+        String raw_string = postNonAPISynchronous(BOOK_FLIGHT, strJson);
 
         // list = gson.fromJson(raw_string, listType);   
         return true;
@@ -155,12 +156,26 @@ public class BookModel extends BaseModel {
         String raw_string = super.postNonAPISynchronous(BOOK_DELETE, jsvar.toString());
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(raw_string);
-        
-        if (element.getAsJsonObject().get("result").getAsBoolean()) 
+
+        if (element.getAsJsonObject().get("result").getAsBoolean()) {
             return true;
-        
+        }
 
         return false;
+
+    }
+
+    int getBookAmountByAirlineKor() {
+
+        JSONObject jsvar = new JSONObject();
+        jsvar.put("apiKey", APICenter.getInstance().getApiKey());
+        jsvar.put("airline_kor", APICenter.getInstance().getAirlineKor());
+
+        String raw_string = super.postNonAPISynchronous(BOOK_AMOUNT_BY_AIRLINE_KOR, jsvar.toString());
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(raw_string);
+
+        return element.getAsJsonObject().get("result").getAsInt();
 
     }
 

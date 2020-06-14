@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class VersionVO implements Serializable {
 
     private static final long serialVersionUID = -2345394654625325945L;
-    private String version;
+    private final String version;
 
     public VersionVO(String version) {
         this.version = version;

@@ -112,7 +112,6 @@ public class SignInformation {
         @Override
         public SignInformation build() {
             return new SignInformation(this);
-            //return new  SignInformation(name_eng, name_kor,id,pw,birth,gender,tel,account_type,passport_issue,passport_exp,passport_num, address);
         }
     }
 

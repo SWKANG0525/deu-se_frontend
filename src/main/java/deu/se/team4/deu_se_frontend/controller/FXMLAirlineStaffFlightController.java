@@ -5,6 +5,8 @@
  */
 package deu.se.team4.deu_se_frontend.controller;
 
+import deu.se.team4.deu_se_frontend.DisplayElement;
+import deu.se.team4.deu_se_frontend.NotifyData;
 import deu.se.team4.deu_se_frontend.model.APICenter;
 import deu.se.team4.deu_se_frontend.vo.FlightVO;
 import java.net.URL;
@@ -15,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.Flow;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -177,7 +180,6 @@ public class FXMLAirlineStaffFlightController implements Initializable {
         } catch (IndexOutOfBoundsException e3) {
             System.out.println("항공편이 존재하지 않습니다");
         }
-
     }
 
     private void setFlightInformation(FlightVO flight_vo) {
@@ -262,4 +264,6 @@ public class FXMLAirlineStaffFlightController implements Initializable {
         observableList = FXCollections.observableArrayList(APICenter.getInstance().getFlightByDate(today_date));
         flightTable.setItems(observableList);
     }
+
+
 }

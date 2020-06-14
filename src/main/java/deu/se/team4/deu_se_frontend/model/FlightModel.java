@@ -79,7 +79,7 @@ public class FlightModel extends BaseModel {
 
     }
         
-        FlightVO generateFlightByIdentifier(String   identifier) {
+        FlightVO generateFlightByIdentifier(String identifier) {
 
         JSONObject jsvar = new JSONObject();
         jsvar.put("apiKey", APICenter.getInstance().getApiKey());

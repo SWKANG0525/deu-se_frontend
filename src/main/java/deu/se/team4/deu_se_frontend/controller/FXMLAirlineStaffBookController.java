@@ -109,7 +109,6 @@ public class FXMLAirlineStaffBookController implements Initializable {
 
     private void loadFlight() {
         flightTable.getItems().clear();
-        // 항공사 이름 넣을 시, 편명 조회하는걸로 변경하기
         observableFlightList = FXCollections.observableArrayList(APICenter.getInstance().getFlightByAirlineKor(APICenter.getInstance().getAirlineKor()));
         flightTable.setItems(observableFlightList);
     }

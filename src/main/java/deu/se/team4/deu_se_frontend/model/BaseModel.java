@@ -19,8 +19,8 @@ import okhttp3.Response;
  */
 abstract class BaseModel {
 
-    private static final String baseUrl = "http://localhost:3000/";
-    //"http://49.50.163.131:3000/";
+    private static final String baseUrl = APICenter.getInstance().getServerAddr();
+
     protected String result;
     protected Gson gson;
     private OkHttpClient client;
